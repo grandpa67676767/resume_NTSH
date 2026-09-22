@@ -69,6 +69,28 @@
             color: #555;
         }
 
+        /* QR Code */
+        .qr-code {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .qr-code p {
+            margin-top: 10px;
+            color: #555;
+            font-size: 14px;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -86,6 +108,7 @@
 </header>
 
 <div class="container">
+
     <div class="card-grid">
 
         <div class="card">
@@ -124,6 +147,13 @@
         </div>
 
     </div>
+
+    <!-- QR Code -->
+    <div class="qr-code">
+        <img src="/static/images/qr_code.jpg" alt="QR Code">
+        <p>掃描 QR Code 查看學習歷程</p>
+    </div>
+
 </div>
 
 <footer>
