@@ -3,45 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask a Question</title>
+    <title>課外活動</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            margin: 0;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            background-color: #f4f8f5;
             color: #333;
         }
+
         header {
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #4CAF50, #2E8B57);
             color: white;
-            padding: 10px;
+            padding: 35px 20px;
             text-align: center;
         }
-        section {
-            margin: 20px;
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
         }
+
+        header p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            color: #2E7D32;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 活動卡片 */
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .activity-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .activity-content {
+            padding: 20px;
+        }
+
+        .activity-content h3 {
+            margin-top: 0;
+            color: #388E3C;
+            font-size: 22px;
+        }
+
+        .activity-content p {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* 問答區 */
         .form-box {
             background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .form-box h2 {
+            margin-top: 0;
+            color: #2E7D32;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            padding: 11px 22px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #388E3C;
+        }
+
+        input[type="button"] {
+            background-color: #777;
+            color: white;
+        }
+
+        input[type="button"]:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #2E7D32;
+            color: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        /* 手機版 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 30px;
+            }
+
+            .activities {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin-top: 25px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1000px) {
+            .activities {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
+
 <body>
+
     <header>
-        <h1>課外活動</h1>
+        <h1>🎓 課外活動</h1>
+        <p>探索校園生活，培養興趣與發展多元能力</p>
     </header>
+
     <section>
+
+        <div class="intro">
+            <h2>豐富多元的課外活動</h2>
+            <p>
+                課外活動是校園生活中重要的一部分，
+                不只能培養興趣，也能學習團隊合作、溝通與領導能力。
+                歡迎選擇自己有興趣的活動，讓校園生活更加充實！
+            </p>
+        </div>
+
+        <!-- 活動介紹 -->
+        <div class="activities">
+
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=900&q=80"
+                     alt="音樂活動">
+                <div class="activity-content">
+                    <h3>🎵 音樂社</h3>
+                    <p>
+                        喜歡音樂的同學可以加入音樂社，
+                        一起學習樂器、練習歌曲，並參與校內外表演。
+                    </p>
+                    <span class="tag">音樂</span>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80"
+                     alt="籃球活動">
+                <div class="activity-content">
+                    <h3>🏀 籃球社</h3>
+                    <p>
+                        透過籃球運動鍛鍊體能，學習團隊合作，
+                        也可以和同學一起參加校內籃球比賽。
+                    </p>
+                    <span class="tag">體育</span>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+                     alt="社團活動">
+                <div class="activity-content">
+                    <h3>🤝 志工服務</h3>
+                    <p>
+                        參與志工服務，協助社區與公益活動，
+                        在服務他人的過程中培養責任感與同理心。
+                    </p>
+                    <span class="tag">服務學習</span>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                     alt="資訊科技活動">
+                <div class="activity-content">
+                    <h3>💻 資訊社</h3>
+                    <p>
+                        學習程式設計、網頁製作與資訊科技，
+                        透過實作培養解決問題的能力。
+                    </p>
+                    <span class="tag">科技</span>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80"
+                     alt="美術活動">
+                <div class="activity-content">
+                    <h3>🎨 美術社</h3>
+                    <p>
+                        透過繪畫、設計與各種藝術創作，
+                        發揮想像力與創意，完成屬於自己的作品。
+                    </p>
+                    <span class="tag">藝術</span>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                     alt="戶外活動">
+                <div class="activity-content">
+                    <h3>🌳 戶外探索</h3>
+                    <p>
+                        參加戶外探索與校外活動，
+                        親近自然、挑戰自我，同時增進同學之間的感情。
+                    </p>
+                    <span class="tag">戶外活動</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 問答區 -->
         <div class="form-box">
+            <h2>💬 活動問題</h2>
+            <p>如果對課外活動有任何問題，可以在下面輸入你的問題。</p>
+
             <form action="/activities" method="post">
-                <label for="question">你的問題:</label><br>
-                <input type="text" id="question" name="question" value="{{ question }}"><br><br>
-                <label for="answer">答案:</label><br>
-                <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
-                <input type="submit" value="送出">
-                <input type="button" value="回首頁" onclick="window.location.href='/'">
+
+                <label for="question">你的問題：</label>
+                <input type="text"
+                       id="question"
+                       name="question"
+                       placeholder="例如：學校有哪些社團？"
+                       value="{{ question }}">
+
+                <label for="answer">答案：</label>
+                <input type="text"
+                       id="answer"
+                       name="answer"
+                       readonly
+                       value="{{ answer }}">
+
+                <div class="buttons">
+                    <input type="submit" value="送出">
+                    <input type="button"
+                           value="回首頁"
+                           onclick="window.location.href='/'">
+                </div>
+
             </form>
         </div>
+
     </section>
+
+    <footer>
+        <p>© 2026 校園課外活動網站</p>
+    </footer>
+
 </body>
 </html>
