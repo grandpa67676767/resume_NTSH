@@ -104,7 +104,7 @@ def ai():
     return render_template('ai.html')
 
 @app.route('/67')
-def 67():
+def page_67():
     return render_template('67.html')
 
 
