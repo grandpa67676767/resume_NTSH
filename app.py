@@ -5,7 +5,6 @@ app = Flask(__name__)
 # 建立題庫
 zh_ko_dict = {
     "你好": "안녕하세요",
-    "안녕하세요" : "你好",
     "謝謝": "감사합니다",
     "對不起": "죄송합니다",
     "早安": "좋은 아침",
@@ -16,7 +15,19 @@ zh_ko_dict = {
     "家人": "가족",
     "愛": "사랑"
 }
-
+# 建立中日文題庫
+zh_ja_dict = {
+    "你好": "こんにちは",
+    "謝謝": "ありがとうございます",
+    "對不起": "ごめんなさい",
+    "早安": "おはようございます",
+    "晚安": "おやすみなさい",
+    "老師": "先生",
+    "學生": "学生",
+    "朋友": "友達",
+    "家人": "家族",
+    "愛": "愛"
+}
 
 @app.route('/')
 def index():
@@ -41,6 +52,20 @@ def ask():
     # GET 時給空白欄位
     return render_template('ask.html', question="", answer="")
 
+# 使用 dict 作為中日翻譯的題庫
+@app.route('/ask2', methods=['GET', 'POST'])
+def ask2():
+    if request.method == 'POST':
+        # 2. 讀取學生的問題###^#@#Q%#@
+        question1 = request.form.get('question', '').strip()
+        # 3. 查詢題庫的對應答案
+        # answer1 = zh_ko_dict.get(question, "抱歉，我目前沒有這個詞的韓文對應。")
+
+        answer1 = zh_ko_dict[question1]
+        # 4. 回傳答案給學生
+        return render_template('ask2.html', question=question1, answer=answer1)
+    # GET 時給空白欄位
+    return render_template('ask2.html', question="", answer="")
 
 
 #改成互動 3/17
