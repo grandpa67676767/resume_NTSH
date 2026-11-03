@@ -1,1 +1,208 @@
 
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>多國語言翻譯</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    margin: 0;
+}
+
+header {
+    background: #4285F4;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.form-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.language-box {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+select {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.swap {
+    padding: 10px;
+    border: none;
+    background: #e8f0fe;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.translation-box {
+    display: flex;
+    gap: 15px;
+}
+
+textarea {
+    width: 50%;
+    height: 180px;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.submit {
+    background: #4285F4;
+    color: white;
+}
+
+.home {
+    background: #eee;
+}
+
+@media(max-width:600px) {
+    .translation-box {
+        flex-direction: column;
+    }
+
+    textarea {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>多國語言翻譯</h1>
+</header>
+
+<div class="container">
+
+<div class="form-box">
+
+<form action="/translate" method="POST">
+
+    <div class="language-box">
+
+        <select name="source_lang" id="source_lang">
+
+            <option value="zh-TW"
+            {% if source_lang == 'zh-TW' %}selected{% endif %}>
+                中文
+            </option>
+
+            <option value="ko"
+            {% if source_lang == 'ko' %}selected{% endif %}>
+                韓文
+            </option>
+
+            <option value="ja"
+            {% if source_lang == 'ja' %}selected{% endif %}>
+                日文
+            </option>
+
+        </select>
+
+        <button type="button" class="swap"
+        onclick="swapLanguage()">⇄</button>
+
+        <select name="target_lang" id="target_lang">
+
+            <option value="ko"
+            {% if target_lang == 'ko' %}selected{% endif %}>
+                韓文
+            </option>
+
+            <option value="ja"
+            {% if target_lang == 'ja' %}selected{% endif %}>
+                日文
+            </option>
+
+            <option value="zh-TW"
+            {% if target_lang == 'zh-TW' %}selected{% endif %}>
+                中文
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="translation-box">
+
+        <textarea name="question"
+        placeholder="輸入要翻譯的文字..."
+        required>{{ question }}</textarea>
+
+        <textarea readonly
+        placeholder="翻譯結果...">{{ answer }}</textarea>
+
+    </div>
+
+    <button type="submit" class="submit">
+        翻譯
+    </button>
+
+    <button type="button" class="home"
+    onclick="window.location.href='/'">
+        回首頁
+    </button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+
+function swapLanguage() {
+
+    let source = document.getElementById("source_lang");
+    let target = document.getElementById("target_lang");
+
+    let temp = source.value;
+
+    source.value = target.value;
+    target.value = temp;
+
+}
+
+</script>
+
+</body>
+</html>
